@@ -1,0 +1,36 @@
+version: "2"
+services:
+  web:
+    image: nginx:1.11.1
+    ports:
+      - "8087:80"
+    depends_on:
+      - php
+    volumes_from:
+      - php
+    volumes:
+      - ./images/nginx/config:/etc/nginx/conf.d
+  php:
+    build:
+      context: ./images/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/mnt/app
+  db:
+    image: mariadb:10.1
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_ALLOW_EMPTY_PASSWORD: 0
+      MYSQL_DATABASE: "app"
+      MYSQL_USER: "app"
+      MYSQL_PASSWORD: "amin888"
+    volumes:
+      - db_center:/var/lib/mysql
+    networks:
+      - "php_web_network"
+volumes:
+  db_center:
+    driver: local
+networks:
+  php_web_network:
+    driver: bridge
