@@ -26,8 +26,6 @@ services:
       MYSQL_PASSWORD: "amin888"
     volumes:
       - db_center:/var/lib/mysql
-    networks:
-      - "php_web_network"
 volumes:
   db_center:
     driver: local
