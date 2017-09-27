@@ -26,6 +26,13 @@ services:
       MYSQL_PASSWORD: "amin888"
     volumes:
       - db_center:/var/lib/mysql
+  console:
+      build:
+        context: ./images/console
+        dockerfile: Dockerfile
+      volumes_from:
+        - php
+      tty: true
 volumes:
   db_center:
     driver: local

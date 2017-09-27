@@ -1,10 +1,36 @@
 # docker_laravel_run_context
 laravel 运行环境 php 7.0 nginx 1.11.1 mariadb 10.1
 
-###docker
+##  启动
+
+		docker-compose up -d
+
+## 安装docker
+
+### centos &&  ubuntu
+
+		curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -
+		sudo mkdir -p /etc/docker
+		sudo tee /etc/docker/daemon.json <<-'EOF'
+		{
+		  "registry-mirrors": ["https://3yf8zoyf.mirror.aliyuncs.com"]
+		}
+		EOF
+		sudo systemctl daemon-reload
+		sudo systemctl restart docker
+
+
+### docker
+
+	删除虚悬镜像
+	docker rmi $(docker images -q -f dangling=true)
 
 
 #### docker基础
+
+	删除所有容器 （docker默认会阻止删除正在运行的容器）
+	docker rm $(docker ps -a -q)
+
 
 	创建一个可以 交互 终端的 容器
 	docker run -i  -t  --name interactive centos
