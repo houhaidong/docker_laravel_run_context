@@ -1,5 +1,5 @@
 # docker_laravel_run_context  容器化应用 php
-laravel 运行环境 php 7.0 nginx 1.11.1 mariadb 10.1
+laravel 运行环境 php 7.0 && nginx 1.11.1 &&  mariadb 10.1  && git && composer
 
 ##  启动
 
