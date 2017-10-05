@@ -34,9 +34,6 @@ services:
         dockerfile: Dockerfile
       volumes_from:
         - php
-        - db
-      volumes:
-        - ./backup:/backup
       tty: true
 volumes:
   db_center:
