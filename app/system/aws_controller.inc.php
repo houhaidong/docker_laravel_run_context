@@ -43,8 +43,8 @@ class AWS_CONTROLLER
 			$this->model('online')->online_active($this->user_id, $this->user_info['last_active']);
 		}
 
-		
-		
+
+
 		else if ($this->user_id)
 		{
 			$this->model('account')->logout();
@@ -215,6 +215,8 @@ class AWS_CONTROLLER
 
 		$crumb_template = $this->crumb;
 
+
+
 		if (strlen($url) > 1 and substr($url, 0, 1) == '/')
 		{
 			$url = base_url() . substr($url, 1);
@@ -232,10 +234,17 @@ class AWS_CONTROLLER
 
 		TPL::assign('crumb', $crumb_template);
 
+
 		foreach ($this->crumb as $key => $crumb)
 		{
-			$title = $crumb['name'] . ' - ' . $title;
+
+			if($crumb['name']=="发现"){
+				$title =  $title;
+			}else{
+				$title = $crumb['name'] . ' - ' . $title;
+			}
 		}
+
 
 		TPL::assign('page_title', htmlspecialchars(rtrim($title, ' - ')));
 

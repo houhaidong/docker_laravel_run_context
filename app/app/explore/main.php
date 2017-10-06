@@ -23,7 +23,7 @@ class main extends AWS_CONTROLLER
 	public function get_access_rule()
 	{
 
-		
+
 		$rule_action['rule_type'] = "white"; //'black'黑名单,黑名单中的检查  'white'白名单,白名单以外的检查
 
 		if ($this->user_info['permission']['visit_explore'] AND $this->user_info['permission']['visit_site'])
@@ -50,6 +50,7 @@ class main extends AWS_CONTROLLER
 	public function index_action()
 	{
 
+
 		if (is_mobile())
 		{
 			HTTP::redirect('/m/explore/' . $_GET['id']);
@@ -57,7 +58,7 @@ class main extends AWS_CONTROLLER
 
 		if ($this->user_id)
 		{
-			$this->crumb(AWS_APP::lang()->_t('发现'), '/explore');
+		   $this->crumb(AWS_APP::lang()->_t('发现'), '/explore');
 
 			if (! $this->user_info['email'])
 			{
@@ -76,6 +77,9 @@ class main extends AWS_CONTROLLER
 				$category_info = $this->model('system')->get_category_info_by_url_token($_GET['category']);
 			}
 		}
+
+
+
 
 		if ($category_info)
 		{
@@ -156,6 +160,10 @@ class main extends AWS_CONTROLLER
 
 		TPL::assign('posts_list', $posts_list);
 		TPL::assign('posts_list_bit', TPL::output('explore/ajax/list', false));
+
+
+
+
 
 		TPL::output('explore/index');
 	}
