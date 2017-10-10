@@ -337,16 +337,16 @@
                                     <input type="checkbox" name="new_user_email_setting[]" value="FOLLOW_ME"<?php if ($this->setting['new_user_email_setting']['FOLLOW_ME'] != 'N') { ?> checked="checked"<?php } ?> /> <?php _e('当有人关注我'); ?>
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="new_user_email_setting[]" value="QUESTION_INVITE"<?php if ($this->setting['new_user_email_setting']['QUESTION_INVITE'] != 'N') { ?> checked="checked"<?php } ?> /> <?php _e('有人邀请我回答问题'); ?>
+                                    <input type="checkbox" name="new_user_email_setting[]" value="QUESTION_INVITE"<?php if ($this->setting['new_user_email_setting']['QUESTION_INVITE'] != 'N') { ?> checked="checked"<?php } ?> /> <?php _e('有人邀请我回答讨论'); ?>
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="new_user_email_setting[]" value="NEW_ANSWER"<?php if ($this->setting['new_user_email_setting']['NEW_ANSWER'] != 'N') { ?> checked="checked"<?php } ?> /> <?php _e('我关注的问题有了新回复'); ?>
+                                    <input type="checkbox" name="new_user_email_setting[]" value="NEW_ANSWER"<?php if ($this->setting['new_user_email_setting']['NEW_ANSWER'] != 'N') { ?> checked="checked"<?php } ?> /> <?php _e('我关注的讨论有了新回复'); ?>
                                 </label>
                                 <label>
                                     <input type="checkbox" name="new_user_email_setting[]" value="NEW_MESSAGE"<?php if ($this->setting['new_user_email_setting']['NEW_MESSAGE'] != 'N') { ?> checked="checked"<?php } ?> /> <?php _e('有人向我发送私信'); ?>
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="new_user_email_setting[]" value="QUESTION_MOD"<?php if ($this->setting['new_user_email_setting']['QUESTION_MOD'] != 'N') { ?> checked="checked"<?php } ?> /> <?php _e('我的问题被编辑'); ?>
+                                    <input type="checkbox" name="new_user_email_setting[]" value="QUESTION_MOD"<?php if ($this->setting['new_user_email_setting']['QUESTION_MOD'] != 'N') { ?> checked="checked"<?php } ?> /> <?php _e('我的讨论被编辑'); ?>
                                 </label>
                             </div>
                         </div>
@@ -441,7 +441,7 @@
                                             <textarea class="form-control textarea" name="request_route_custom" id="request_route_custom" rows="4" cols="63"><?php echo $this->setting['request_route_custom']; ?></textarea>
                                         </div>
                                         <div class="help-block">
-                                            <?php _e('此模式只有开启 Rewrite 后有效, 请填写简略正则表达式, 每行一条规则, 中间使用 === 隔开, 左边为站点默认 URL 模式, 右边为替换后的 URL 模式, 链接以 / 开头, (:num) 代表数字, (:any) 代表任意字符<br />如替换问题规则：<br />/question/(:any)===/q_(:any)<br />(!) 警告: 使用此功能之前请确定你对替换有所把握, 错误的规则将导致站点不能运行'); ?>
+                                            <?php _e('此模式只有开启 Rewrite 后有效, 请填写简略正则表达式, 每行一条规则, 中间使用 === 隔开, 左边为站点默认 URL 模式, 右边为替换后的 URL 模式, 链接以 / 开头, (:num) 代表数字, (:any) 代表任意字符<br />如替换讨论规则：<br />/question/(:any)===/q_(:any)<br />(!) 警告: 使用此功能之前请确定你对替换有所把握, 错误的规则将导致站点不能运行'); ?>
                                         </div>
 
                                     </li>
@@ -507,11 +507,11 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('问题自动锁定时间'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('讨论自动锁定时间'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="auto_question_lock_day" class="form-control" type="text" value="<?php echo $this->setting['auto_question_lock_day']; ?>"/>
 
-                                <div class="help-block"><?php _e('单位'); ?>: <?php _e('天'); ?>, <?php _e('问题超过设定天数没有动作,系统则会自动锁定该问题, 设置为 0 则关闭自动锁定'); ?></div>
+                                <div class="help-block"><?php _e('单位'); ?>: <?php _e('天'); ?>, <?php _e('讨论超过设定天数没有动作,系统则会自动锁定该讨论, 设置为 0 则关闭自动锁定'); ?></div>
                             </div>
                         </div>
                     </td>
@@ -529,7 +529,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('问题举报理由选项'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('讨论举报理由选项'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <textarea class="form-control textarea" name="report_reason" rows="5" ><?php echo get_setting('report_reason'); ?></textarea>
 
@@ -613,7 +613,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('发起问题模式'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('发起讨论模式'); ?>:</span>
                             <div class="col-sm-6 col-xs-8">
                                 <label><input type="radio" name="quick_publish" value="Y"<?php if ($this->setting['quick_publish'] == 'Y') { ?> checked="checked"<?php } ?> /> <?php _e('快捷模式'); ?></label>
                                 <label class="col-md-offset-1"><input type="radio" name="quick_publish" value="N"<?php if ($this->setting['quick_publish'] != 'Y') { ?> checked="checked"<?php } ?> /> <?php _e('高级模式'); ?></label>
@@ -705,7 +705,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('问题标题最大字符数限制'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('讨论标题最大字符数限制'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="question_title_limit" class="form-control" type="text" value="<?php echo $this->setting['question_title_limit']; ?>"/>
 
@@ -717,7 +717,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('新问题强制要求添加话题'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('新讨论强制要求添加话题'); ?>:</span>
                             <div class="col-sm-6 col-xs-8">
                                 <div class="btn-group mod-btn">
                                     <label type="button" class="btn mod-btn-color">
@@ -735,7 +735,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('问题话题数量限制'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('讨论话题数量限制'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="question_topics_limit" class="form-control" type="text" value="<?php echo $this->setting['question_topics_limit']; ?>"/>
 
@@ -835,7 +835,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('参与自动选出最佳回复的问题最小回复数'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('参与自动选出最佳回复的讨论最小回复数'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="best_answer_min_count" type="text" class="form-control" value="<?php echo $this->setting['best_answer_min_count']; ?>"/>
                             </div>
@@ -855,7 +855,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('阅读器获取最近多少天的热门问题'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('阅读器获取最近多少天的热门讨论'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="reader_questions_last_days" type="text" class="form-control" value="<?php echo $this->setting['reader_questions_last_days']; ?>"/>
                             </div>
@@ -865,7 +865,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('阅读器热门问题赞同数需大于或等于'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('阅读器热门讨论赞同数需大于或等于'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="reader_questions_agree_count" type="text" class="form-control" value="<?php echo $this->setting['reader_questions_agree_count']; ?>"/>
                             </div>
@@ -1036,7 +1036,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('发起问题'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('发起讨论'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="integral_system_config_new_question" type="text" class="form-control" value="<?php echo $this->setting['integral_system_config_new_question']; ?>"/>
                             </div>
@@ -1046,7 +1046,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('回复问题'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('回复讨论'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="integral_system_config_new_answer" type="text" class="form-control" value="<?php echo $this->setting['integral_system_config_new_answer']; ?>"/>
                             </div>
@@ -1056,7 +1056,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('问题被回复时增加发起者积分'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('讨论被回复时增加发起者积分'); ?>:</span>
                             <div class="col-sm-6 col-xs-8">
                                 <div class="btn-group mod-btn">
                                     <label type="button" class="btn mod-btn-color">
@@ -1104,7 +1104,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('发起者邀请用户回答问题且收到答案'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('发起者邀请用户回答讨论且收到答案'); ?>:</span>
                             <div class="col-sm-5 col-xs-8">
                                 <input name="integral_system_config_invite_answer" type="text" class="form-control" value="<?php echo $this->setting['integral_system_config_invite_answer']; ?>"/>
                             </div>
@@ -1159,7 +1159,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('用户对每个问题的回复限制'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('用户对每个讨论的回复限制'); ?>:</span>
                             <div class="col-sm-6 col-xs-8">
                                 <label><input type="radio" name="answer_unique" value="Y"<?php if ($this->setting['answer_unique'] == 'Y') { ?> checked="checked"<?php } ?> /><?php _e('只允许回复一次'); ?></label>
                                 <label class="col-md-offset-1"><input type="radio" name="answer_unique" value="N"<?php if ($this->setting['answer_unique'] != 'Y') { ?> checked="checked"<?php } ?> /><?php _e('不限制'); ?></label>
@@ -1170,7 +1170,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('允许用户回复自己发起的问题'); ?>:</span>
+                            <span class="col-sm-4 col-xs-3 control-label"><?php _e('允许用户回复自己发起的讨论'); ?>:</span>
                             <div class="col-sm-6 col-xs-8">
                                 <div class="btn-group mod-btn">
                                     <label type="button" class="btn mod-btn-color">

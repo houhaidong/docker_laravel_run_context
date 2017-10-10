@@ -25,7 +25,7 @@
 		</div>
 		<!-- end 话题bar -->
 
-		<!-- 问题详情 -->
+		<!-- 讨论详情 -->
 		<div class="aw-question-detail">
 			<div class="mod-head">
 				<h1><?php echo $this->question_info['question_content']; ?></h1>
@@ -91,7 +91,7 @@
 			</div>
 			<?php } ?>
 		</div>
-		<!-- end 问题详情 -->
+		<!-- end 讨论详情 -->
 
 		<!-- 回复列表 -->
 		<div class="aw-replay-list">
@@ -187,11 +187,11 @@
 			<?php if (!$this->user_id) { ?>
 			<a class="aw-load-more no-border" id="load_index_actions" href="account/login/"><?php _e('登录进行回复'); ?></a>
 			<?php } else if ($this->question_info['lock']) { ?>
-			<p align="center"><?php _e('该问题目前已经被锁定, 无法添加新回复'); ?></p>
+			<p align="center"><?php _e('该讨论目前已经被锁定, 无法添加新回复'); ?></p>
 			<?php } else if ($this->user_answered) { ?>
-			<p align="center"><?php _e('一个问题只能回复一次'); ?><?php if (get_setting('answer_edit_time')) { ?>, <?php _e('你可以在发言后 %s 分钟内编辑回复过的内容', get_setting('answer_edit_time')); ?><?php } ?></p>
+			<p align="center"><?php _e('一个讨论只能回复一次'); ?><?php if (get_setting('answer_edit_time')) { ?>, <?php _e('你可以在发言后 %s 分钟内编辑回复过的内容', get_setting('answer_edit_time')); ?><?php } ?></p>
 			<?php } else if ((get_setting('answer_self_question') == 'N') && ($this->user_id == $this->question_info['published_uid'])) { ?>
-			<p align="center"><?php _e('不能回复自己发布的问题, 你可以修改问题内容'); ?></p>
+			<p align="center"><?php _e('不能回复自己发布的讨论, 你可以修改讨论内容'); ?></p>
 			<?php } else { ?>
 			<form action="question/ajax/save_answer/" onsubmit="return false;" method="post" id="answer_form" class="question_answer_form">
 				<input type="hidden" name="attach_access_key" value="<?php echo $this->attach_access_key; ?>" />
@@ -204,7 +204,7 @@
 					<span class="pull-right">
 						<?php if (!$this->question_focus) { ?>
 						<label>
-							<input type="checkbox" checked="checked" value="1" name="auto_focus" /> <?php _e('关注问题'); ?>
+							<input type="checkbox" checked="checked" value="1" name="auto_focus" /> <?php _e('关注讨论'); ?>
 						</label>
 						<?php } ?>
 						<?php if (get_setting('anonymous_enable') == 'Y') { ?>

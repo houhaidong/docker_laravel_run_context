@@ -20,16 +20,16 @@
                         <dd><span class="<?php if (get_setting('integral_system_config_invite') >= 0) { ?>green<?php } else { ?>red<?php } ?>"><?php _e('%s 分', get_setting('integral_system_config_invite')); ?></span></dd>
                     </dl>
                     <dl>
-                        <dt><?php _e('发起问题'); ?></dt>
+                        <dt><?php _e('发起讨论'); ?></dt>
                         <dd><span class="<?php if (get_setting('integral_system_config_new_question') >= 0) { ?>green<?php } else { ?>red<?php } ?>"><?php _e('%s 分', get_setting('integral_system_config_new_question')); ?></span></dd>
                     </dl>
                     <dl>
-                        <dt><?php _e('回复问题'); ?></dt>
+                        <dt><?php _e('回复讨论'); ?></dt>
                         <dd><span class="<?php if (get_setting('integral_system_config_new_answer') >= 0) { ?>green<?php } else { ?>red<?php } ?>"><?php _e('%s 分', get_setting('integral_system_config_new_answer')); ?></span></dd>
                     </dl>
                     <?php if (get_setting('integral_system_config_answer_change_source') == 'Y' AND get_setting('integral_system_config_new_answer') <= 0) { ?>
                     <dl>
-                        <dt><?php _e('问题被回复'); ?></dt>
+                        <dt><?php _e('讨论被回复'); ?></dt>
                         <dd><span class="green"><?php _e('%s 分', -get_setting('integral_system_config_new_answer')); ?></span></dd>
                     </dl>
                     <?php } ?>
@@ -50,11 +50,11 @@
                         <dd><span class="<?php if (get_setting('integral_system_config_answer_fold') >= 0) { ?>green<?php } else { ?>red<?php } ?>"><?php _e('%s 分', get_setting('integral_system_config_answer_fold')); ?></span></dd>
                     </dl>
                     <dl>
-                        <dt><?php _e('发起者邀请用户回答问题且收到答案'); ?></dt>
+                        <dt><?php _e('发起者邀请用户回答讨论且收到答案'); ?></dt>
                         <dd><span class="<?php if (get_setting('integral_system_config_invite_answer') >= 0) { ?>green<?php } else { ?>red<?php } ?>"><?php _e('%s 分', get_setting('integral_system_config_invite_answer')); ?></span></dd>
                     </dl>
                     <dl>
-                        <dt><?php _e('回复问题发起者的邀请'); ?></dt>
+                        <dt><?php _e('回复讨论发起者的邀请'); ?></dt>
                         <dd><span class="<?php if (-get_setting('integral_system_config_invite_answer') >= 0) { ?>green<?php } else { ?>red<?php } ?>"><?php _e('%s 分', -get_setting('integral_system_config_invite_answer')); ?></span></dd>
                     </dl>
                 </div>

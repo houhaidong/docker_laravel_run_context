@@ -19,7 +19,7 @@
 
 	<!-- 内容 -->
 	<div class="container">
-		<!-- 问题列表 -->
+		<!-- 讨论列表 -->
 		<div class="aw-question-list">
 			<div class="mod-body">
 				<ul id="load_explore_list">
@@ -51,10 +51,10 @@
 							<?php } ?>
 							<?php if ($val['question_id']) { ?>
 							<?php if ($val['answer_count'] > 0) { ?>
-								<?php if ($val['answer_info']['anonymous']) { ?><a href="javascript:;"><?php _e('匿名用户'); ?></a><?php } else { ?><a href="m/people/<?php echo $val['answer_info']['user_info']['url_token']; ?>"><?php echo $val['answer_info']['user_info']['user_name']; ?></a><?php } ?> <?php _e('回复了问题'); ?>
+								<?php if ($val['answer_info']['anonymous']) { ?><a href="javascript:;"><?php _e('匿名用户'); ?></a><?php } else { ?><a href="m/people/<?php echo $val['answer_info']['user_info']['url_token']; ?>"><?php echo $val['answer_info']['user_info']['user_name']; ?></a><?php } ?> <?php _e('回复了讨论'); ?>
 									<span class="pull-right color-999"><?php echo date_friendly($val['update_time'], 604800, 'Y-m-d'); ?></span>
 							<?php } else { ?>
-								<?php if ($val['anonymous'] == 0) { ?><a href="m/people/<?php echo $val['user_info']['url_token']; ?>"><?php echo $val['user_info']['user_name']; ?></a><?php } else { ?><a href="javascript:;"><?php _e('匿名用户'); ?></a><?php } ?> <?php _e('发起了问题'); ?>
+								<?php if ($val['anonymous'] == 0) { ?><a href="m/people/<?php echo $val['user_info']['url_token']; ?>"><?php echo $val['user_info']['user_name']; ?></a><?php } else { ?><a href="javascript:;"><?php _e('匿名用户'); ?></a><?php } ?> <?php _e('发起了讨论'); ?>
 									<span class="pull-right color-999"><?php echo date_friendly($val['add_time'], 604800, 'Y-m-d'); ?></span>
 							<?php } ?>
 							<?php } else { ?>
@@ -73,7 +73,7 @@
 				<a id="load_explore" class="aw-load-more" auto-load="false"><i class="icon icon-loading icon-spin"></i> <span><?php _e('更多'); ?></span></a>
 			</div>
 		</div>
-		<!-- end 问题列表 -->
+		<!-- end 讨论列表 -->
 
 		<!-- 热门话题 -->
 		<?php if ($this->sidebar_hot_topics) { ?>

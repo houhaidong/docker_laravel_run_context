@@ -22,14 +22,14 @@
 					<?php if (sizeof($this->question_topics) == 0 AND $this->user_id AND !$this->question_info['lock'] && $this->user_info['permission']['edit_topic']) { ?>
 					<div class="aw-notopic-sort">
 						<?php if ($this->related_topics) { ?>
-						<span class="pull-left"><?php _e('可能属于这些标签'); ?>&nbsp;:&nbsp;</span>
+						<span class="pull-left"><?php _e('可能属于这些话题'); ?>&nbsp;:&nbsp;</span>
 						<?php foreach ($this->related_topics AS $key => $topic_title) { ?>
 						<span class="topic-tag">
 							<a onclick="one_click_add_topic($(this), '<?php echo $topic_title; ?>', <?php echo $this->question_info['question_id'];?>);" class="text"><?php echo $topic_title; ?></a>
 						</span>
-					<?php } ?>, <?php _e('都不是'); ?>? <a href="javascript:;" onclick="$('#question_topic_editor .aw-edit-topic').click();$(this).parents('.aw-notopic-sort').hide();"> <?php _e('点此添加标签'); ?></a>
+						<?php } ?>, <?php _e('都不是'); ?>? <a href="javascript:;" onclick="$('#question_topic_editor .aw-edit-topic').click();$(this).parents('.aw-notopic-sort').hide();"> <?php _e('点此添加话题'); ?></a>
 						<?php } else { ?>
-						<?php _e('没有归属标签, 请帮话题添加标签'); ?>, <a href="javascript:;" onclick="$('#question_topic_editor .aw-edit-topic').click(); $(this).parents('.aw-notopic-sort').hide();"><?php _e('点此添加标签'); ?></a>
+						<?php _e('没有归属话题, 请帮讨论添加话题'); ?>, <a href="javascript:;" onclick="$('#question_topic_editor .aw-edit-topic').click(); $(this).parents('.aw-notopic-sort').hide();"><?php _e('点此添加话题'); ?></a>
 						<?php } ?>
 					</div>
 					<?php } ?>
@@ -42,7 +42,7 @@
 								<a href="topic/<?php echo $val['url_token']; ?>" class="text"><?php echo $val['topic_title']; ?></a>
 							</span>
 							<?php } ?>
-
+							
 							<?php if ($this->user_id AND ((!$this->question_info['lock'] AND $this->user_info['permission']['edit_topic']) OR $this->user_id == $this->question_info['published_uid'])) { ?><span class="icon-inverse aw-edit-topic"<?php if (sizeof($this->question_topics) == 0) { ?> style="display:none"<?php } ?>><i class="icon icon-edit"></i></span><?php } ?>
 						</div>
 					</div>
@@ -63,25 +63,25 @@
 										<ul class="aw-dropdown-list">
 											<li>
 												<?php if ($_GET['column'] == 'log') { ?>
-													<a href="question/<?php echo $this->question_info['question_id']; ?>"><?php _e('问题讨论'); ?></a>
+													<a href="question/<?php echo $this->question_info['question_id']; ?>"><?php _e('讨论讨论'); ?></a>
 												<?php } else { ?>
 													<a href="question/<?php echo $this->question_info['question_id']; ?>?column=log&rf=false" rel="nofollow"><?php _e('修改记录'); ?></a>
 												<?php } ?>
 											</li>
 											<?php if ($this->user_info['permission']['is_administortar'] OR $this->user_info['permission']['is_moderator']) { ?>
 											<li>
-												<a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + '/topic/ajax/lock/', 'question_id=<?php echo $this->question_info['question_id']; ?>');"><?php if ($this->question_info['lock']) { ?><?php _e('解除锁定'); ?><?php } else { ?><?php _e('锁定问题'); ?><?php } ?></a>
+												<a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + '/question/ajax/lock/', 'question_id=<?php echo $this->question_info['question_id']; ?>');"><?php if ($this->question_info['lock']) { ?><?php _e('解除锁定'); ?><?php } else { ?><?php _e('锁定讨论'); ?><?php } ?></a>
 											</li>
 											<li>
-												<a href="javascript:;" onclick="AWS.dialog('confirm', {'message' : '<?php _e('确认删除?'); ?>'}, function(){AWS.ajax_request(G_BASE_URL + '/topic/ajax/remove_question/', 'question_id=<?php echo $this->question_info['question_id']; ?>');});"><?php _e('删除问题'); ?></a>
+												<a href="javascript:;" onclick="AWS.dialog('confirm', {'message' : '<?php _e('确认删除?'); ?>'}, function(){AWS.ajax_request(G_BASE_URL + '/question/ajax/remove_question/', 'question_id=<?php echo $this->question_info['question_id']; ?>');});"><?php _e('删除讨论'); ?></a>
 											</li>
 											<?php } ?>
 											<?php if (($this->user_info['permission']['is_administortar'] OR $this->user_info['permission']['is_moderator'] OR (!$this->question_info['lock'] AND $this->user_info['permission']['redirect_question'])) AND $this->user_id) { ?>
 											<li class="hidden-xs">
 											<?php if ($this->question_info['redirect']) { ?>
-												<a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + '/topic/ajax/redirect/', 'item_id=<?php echo $this->question_info['question_id']; ?>');"><?php _e('撤消重定向'); ?></a>
+												<a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + '/question/ajax/redirect/', 'item_id=<?php echo $this->question_info['question_id']; ?>');"><?php _e('撤消重定向'); ?></a>
 											<?php } else { ?>
-												<a href="javascript:;" onclick="AWS.dialog('redirect', <?php echo $this->question_info['question_id']; ?>);"><?php _e('问题重定向'); ?></a>
+												<a href="javascript:;" onclick="AWS.dialog('redirect', <?php echo $this->question_info['question_id']; ?>);"><?php _e('讨论重定向'); ?></a>
 											<?php } ?>
 											</li>
 											<?php } ?>
@@ -91,7 +91,7 @@
 												</li>
 											<?php } ?>
 											<?php if ($this->user_info['permission']['is_administortar'] OR $this->user_info['permission']['is_moderator']) { ?>
-												<li><a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + '/topic/ajax/set_recommend/', 'action=<?php if ($this->question_info['is_recommend']) { ?>un<?php } ?>set&question_id=<?php echo $this->question_info['question_id']; ?>');"><?php if ($this->question_info['is_recommend']) { ?><?php _e('取消推荐'); ?><?php } else { ?><?php _e('推荐问题'); ?><?php } ?></a>
+												<li><a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + '/question/ajax/set_recommend/', 'action=<?php if ($this->question_info['is_recommend']) { ?>un<?php } ?>set&question_id=<?php echo $this->question_info['question_id']; ?>');"><?php if ($this->question_info['is_recommend']) { ?><?php _e('取消推荐'); ?><?php } else { ?><?php _e('推荐讨论'); ?><?php } ?></a>
 												</li>
 												<?php if (get_setting('enable_help_center') == 'Y') { ?>
 												<li>
@@ -257,7 +257,7 @@
 					<?php if ($_GET['column'] == 'log') { ?>
 					<div class="aw-mod aw-question-edit">
 						<div class="mod-head common-head">
-							<h2><span class="pull-right"><a class="text-color-999" href="question/<?php echo $this->question_info['question_id']; ?>"><?php _e('返回问题'); ?> »</a></span><?php _e('问题修改日志'); ?></h2>
+							<h2><span class="pull-right"><a class="text-color-999" href="question/<?php echo $this->question_info['question_id']; ?>"><?php _e('返回讨论'); ?> »</a></span><?php _e('讨论修改日志'); ?></h2>
 						</div>
 						<div class="mod-body">
 							<ul id="c_log_list"></ul>
@@ -402,7 +402,7 @@
 													</div>
 												</div>
 												<?php if (($this->user_info['permission']['is_moderator'] OR $this->user_info['permission']['is_administortar']) AND !$this->question_info['best_answer']) { ?>
-												<a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + '/topic/ajax/set_best_answer/', 'answer_id=<?php echo $val['answer_id']; ?>');" class="text-color-999"><i class="icon icon-best"></i><?php _e('最佳回复'); ?></a>
+												<a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + '/question/ajax/set_best_answer/', 'answer_id=<?php echo $val['answer_id']; ?>');" class="text-color-999"><i class="icon icon-best"></i><?php _e('最佳回复'); ?></a>
 												<?php } ?>
 											</div>
 											<!-- end 可显示/隐藏的操作box -->
@@ -434,20 +434,20 @@
 						<?php } ?>
 					</div>
 					<?php } ?>
-					<!-- end 问题详细模块 -->
+					<!-- end 讨论详细模块 -->
 
 					<?php if ($_GET['column'] != 'log') { ?>
 					<!-- 回复编辑器 -->
 					<div class="aw-mod aw-replay-box question">
 						<a name="answer_form"></a>
 						<?php if ($this->question_info['lock']) { ?>
-						<p align="center"><?php _e('该问题目前已经被锁定, 无法添加新回复'); ?></p>
+						<p align="center"><?php _e('该讨论目前已经被锁定, 无法添加新回复'); ?></p>
 						<?php } else if (!$this->user_id) { ?>
-						<p align="center"><?php _e('要回复问题请先<a href="account/login/">登录</a>或<a href="account/register/">注册</a>'); ?></p>
+						<p align="center"><?php _e('要回复讨论请先<a href="account/login/">登录</a>或<a href="account/register/">注册</a>'); ?></p>
 						<?php } else if ($this->user_answered) { ?>
-						<p align="center"><?php _e('一个问题只能回复一次'); ?><?php if (get_setting('answer_edit_time')) { ?>, <?php _e('你可以在发言后 %s 分钟内编辑回复过的内容', get_setting('answer_edit_time')); ?><?php } ?></p>
+						<p align="center"><?php _e('一个讨论只能回复一次'); ?><?php if (get_setting('answer_edit_time')) { ?>, <?php _e('你可以在发言后 %s 分钟内编辑回复过的内容', get_setting('answer_edit_time')); ?><?php } ?></p>
 						<?php } else if ((get_setting('answer_self_question') == 'N') && ($this->user_id == $this->question_info['published_uid'])) { ?>
-						<p align="center"><?php _e('不能回复自己发布的问题, 你可以修改问题内容'); ?></p>
+						<p align="center"><?php _e('不能回复自己发布的讨论, 你可以修改讨论内容'); ?></p>
 						<?php } else { ?>
 						<form action="question/ajax/save_answer/" onsubmit="return false;" method="post" id="answer_form" class="question_answer_form">
 			        	<input type="hidden" name="post_hash" value="<?php echo new_post_hash(); ?>" />
@@ -463,7 +463,7 @@
 								<?php } ?>
 								<?php if (!$this->question_focus) { ?>
 								<label class="pull-right">
-									<input type="checkbox" checked="checked" value="1" name="auto_focus" /> <?php _e('关注问题'); ?>
+									<input type="checkbox" checked="checked" value="1" name="auto_focus" /> <?php _e('关注讨论'); ?>
 								</label>
 								<?php } ?>
 								<label class="pull-right">
@@ -576,10 +576,10 @@
 					<?php } ?>
 
 					<?php if ($this->question_related_list) { ?>
-					<!-- 相关问题 -->
+					<!-- 相关讨论 -->
 					<div class="aw-mod">
 						<div class="mod-head">
-							<h3><?php _e('相关问题'); ?></h3>
+							<h3><?php _e('相关讨论'); ?></h3>
 						</div>
 						<div class="mod-body font-size-12">
 							<ul>
@@ -589,13 +589,13 @@
 							</ul>
 						</div>
 					</div>
-					<!-- end 相关问题 -->
+					<!-- end 相关讨论 -->
 					<?php } ?>
 
-					<!-- 问题状态 -->
+					<!-- 讨论状态 -->
 					<div class="aw-mod question-status">
 						<div class="mod-head">
-							<h3><?php _e('问题状态'); ?></h3>
+							<h3><?php _e('讨论状态'); ?></h3>
 						</div>
 						<div class="mod-body">
 							<ul>
@@ -607,7 +607,7 @@
 							</ul>
 						</div>
 					</div>
-					<!-- end 问题状态 -->
+					<!-- end 讨论状态 -->
 				</div>
 				<!-- end 侧边栏 -->
 			</div>

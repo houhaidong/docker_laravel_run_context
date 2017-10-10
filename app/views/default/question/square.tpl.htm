@@ -13,7 +13,7 @@
 						<li<?php if ($_GET['is_recommend']) { ?> class="active"<?php } ?>><a href="question/<?php if ($this->feature_info) { ?>feature_id-<?php echo $this->feature_info['id']; ?>__<?php } ?>category-<?php echo $this->category_info['id']; ?>__is_recommend-1"><?php _e('推荐'); ?></a></li>
 						<li<?php if ((!$_GET['sort_type'] OR $_GET['sort_type'] == 'new') AND !$_GET['is_recommend']) { ?> class="active"<?php } ?>><a href="question/<?php if ($this->feature_info) { ?>feature_id-<?php echo $this->feature_info['id']; ?>__<?php } ?><?php if ($this->category_info['id']) { ?>category-<?php echo $this->category_info['id']; ?><?php } ?>"><?php _e('最新'); ?></a></li>
 
-						<h2 class="hidden-xs"><?php if ($this->category_info) { ?><?php echo $this->category_info['title']; ?><?php } else if ($this->feature_info) { ?><?php echo $this->feature_info['title']; ?><?php } else { ?><?php _e('全部问题'); ?><?php } ?></h2>
+						<h2 class="hidden-xs"><?php if ($this->category_info) { ?><?php echo $this->category_info['title']; ?><?php } else if ($this->feature_info) { ?><?php echo $this->feature_info['title']; ?><?php } else { ?><?php _e('全部讨论'); ?><?php } ?></h2>
 					</ul>
 					<!-- end tab切换 -->
 
@@ -29,7 +29,7 @@
 					<!-- end 自定义tab切换 -->
 					<?php } ?>
 
-					<!-- 问题列表 -->
+					<!-- 讨论列表 -->
 					<div class="aw-mod aw-explore-list">
 						<div class="mod-body">
 							<div class="aw-common-list">
@@ -37,7 +37,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- end 问题列表 -->
+					<!-- end 讨论列表 -->
 
 					<?php echo $this->pagination; ?>
 				</div>

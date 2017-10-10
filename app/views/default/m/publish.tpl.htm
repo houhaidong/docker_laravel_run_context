@@ -2,7 +2,7 @@
 
 <!-- 标题 -->
 <div class="aw-title">
-	<?php _e('发起问题'); ?>
+	<?php _e('发起讨论'); ?>
 </div>
 <!-- end 标题 -->
 
@@ -19,17 +19,17 @@
 		<input type="hidden" name="weixin_pic_url" value="<?php echo $this->weixin_pic_url; ?>" />
 		<?php } ?>
 		<div class="aw-publish-box">
-			<!-- 问题标题 -->
+			<!-- 讨论标题 -->
 			<div class="title">
-				<input type="text" class="form-control" placeholder="<?php _e('输入问题'); ?>" name="question_content" value="<?php echo $this->question_info['question_content']; ?>" />
+				<input type="text" class="form-control" placeholder="<?php _e('输入讨论'); ?>" name="question_content" value="<?php echo $this->question_info['question_content']; ?>" />
 			</div>
-			<!-- end 问题标题 -->
+			<!-- end 讨论标题 -->
 
-			<!-- 问题补充 -->
+			<!-- 讨论补充 -->
 			<div class="content">
-				<textarea name="question_detail" class="form-control autosize" placeholder="<?php _e('问题详细补充（选填）'); ?>" id="publish_detail" cols="30" rows="4"><?php echo $this->question_info['question_detail']; ?></textarea>
+				<textarea name="question_detail" class="form-control autosize" placeholder="<?php _e('讨论详细补充（选填）'); ?>" id="publish_detail" cols="30" rows="4"><?php echo $this->question_info['question_detail']; ?></textarea>
 			</div>
-			<!-- end 问题补充 -->
+			<!-- end 讨论补充 -->
 
 			<!-- 上传控件 -->
 			<div class="aw-upload-box">
@@ -75,10 +75,10 @@
 				<label class="pull-left"><input type="checkbox"  value="1" name="anonymous" /> <?php _e('匿名'); ?></label>
 				<?php } ?>
 				<?php if ($this->question_info['question_id'] AND ($this->user_info['permission']['is_administortar'] OR $this->user_info['permission']['is_moderator'])) { ?>
-				<!-- <label class="pull-left"><input type="checkbox"  value="1" name="do_delete" /> <?php _e('删除问题'); ?></label> -->
+				<!-- <label class="pull-left"><input type="checkbox"  value="1" name="do_delete" /> <?php _e('删除讨论'); ?></label> -->
 				<?php } ?>
 
-				<a class="btn btn-success btn-slarge" onclick="AWS.ajax_post($('#question_form')); return false;"><?php _e('发起问题'); ?></a>
+				<a class="btn btn-success btn-slarge" onclick="AWS.ajax_post($('#question_form')); return false;"><?php _e('发起讨论'); ?></a>
 			</div>
 
 		</div>
